@@ -1,6 +1,6 @@
 <?php
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group(['prefix' => 'auth'], function() use ($router) {
-//     Route::post('/login', 'AuthController@login');
-// });
+Route::group(['prefix' => 'auth'], function() use ($router) {
+    Route::post('/login', 'AuthController@login');
+});
 
 // Route::middleware('auth:api')->group(function () {
 
