@@ -20,7 +20,7 @@ Route::group(['prefix' => 'auth'], function() use ($router) {
 
 Route::group(['middleware' => 'auth:api'], function() use ($router) {
 
-    Route::group(['prefix' => 'news'], function() use ($router) {
+    Route::group(['middleware' => 'role:ADMIN', 'prefix' => 'news'], function() use ($router) {
         Route::get('/', 'NewsController@index');
         Route::get('/:id', 'NewsController@detail');
         Route::post('/add', 'NewsController@add');
@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth:api'], function() use ($router) {
         Route::delete('/delete', 'NewsController@delete');
     });
 
-    Route::group(['prefix' => 'comment'], function() use ($router) {
+    Route::group(['middleware' => 'role:USER', 'prefix' => 'comment'], function() use ($router) {
         Route::post('/:news_id', 'CommentController@index');
         Route::post('/add', 'CommentController@add');
         Route::put('/edit', 'CommentController@edit');
