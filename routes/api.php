@@ -18,9 +18,7 @@ Route::group(['prefix' => 'auth'], function() use ($router) {
     Route::post('/login', 'AuthController@login');
 });
 
-Route::middleware('auth:api')->group(function () {
-
-    // Route::resource('news', [NewsController::class]);
+Route::group(['middleware' => 'auth:api'], function() use ($router) {
 
     Route::group(['prefix' => 'news'], function() use ($router) {
         Route::get('/', 'NewsController@index');
@@ -30,11 +28,11 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('/delete', 'NewsController@delete');
     });
 
-//     Route::group(['prefix' => 'comment'], function() use ($router) {
-//         Route::post('/:news_id', 'CommentController@index');
-//         Route::post('/add', 'CommentController@add');
-//         Route::put('/edit', 'CommentController@edit');
-//         Route::delete('/delete', 'CommentController@delete');
-//     });
-
+    Route::group(['prefix' => 'comment'], function() use ($router) {
+        Route::post('/:news_id', 'CommentController@index');
+        Route::post('/add', 'CommentController@add');
+        Route::put('/edit', 'CommentController@edit');
+        Route::delete('/delete', 'CommentController@delete');
+    });
+    
 });
