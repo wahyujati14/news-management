@@ -18,15 +18,17 @@ Route::group(['prefix' => 'auth'], function() use ($router) {
     Route::post('/login', 'AuthController@login');
 });
 
-// Route::middleware('auth:api')->group(function () {
+Route::middleware('auth:api')->group(function () {
 
-//     Route::group(['prefix' => 'news'], function() use ($router) {
-//         Route::get('/', 'NewsController@index');
-//         Route::get('/:id', 'NewsController@detail');
-//         Route::post('/add', 'NewsController@add');
-//         Route::put('/edit', 'NewsController@edit');
-//         Route::delete('/delete', 'NewsController@delete');
-//     });
+    // Route::resource('news', [NewsController::class]);
+
+    Route::group(['prefix' => 'news'], function() use ($router) {
+        Route::get('/', 'NewsController@index');
+        Route::get('/:id', 'NewsController@detail');
+        Route::post('/add', 'NewsController@add');
+        Route::put('/edit', 'NewsController@edit');
+        Route::delete('/delete', 'NewsController@delete');
+    });
 
 //     Route::group(['prefix' => 'comment'], function() use ($router) {
 //         Route::post('/:news_id', 'CommentController@index');
@@ -35,4 +37,4 @@ Route::group(['prefix' => 'auth'], function() use ($router) {
 //         Route::delete('/delete', 'CommentController@delete');
 //     });
 
-// });
+});
