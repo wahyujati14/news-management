@@ -8,4 +8,10 @@ Saya membuat ini dengan Laravel 10, dengan PHP versi 8.1.0
 5. php artisan db:seed
 6. php artisan serve
 
+Akun admin :
+Email : admin@gmail.com 
+Password : admin
 
+Akun user :
+Email : user@gmail.com
+Password : user
