@@ -6,3 +6,6 @@ Saya membuat ini dengan Laravel 10, dengan PHP versi 8.1.0
 4. php artisan migrate
 5. php artisan db:seed
 6. php artisan serve
+
+*Keterangan :
+1. Saya hanya bisa sampai di pembuatan laravel passport untuk autentikasi Oauth 2.0
