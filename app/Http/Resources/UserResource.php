@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Carbon\Carbon;
 
-class NewsResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,11 +16,8 @@ class NewsResource extends JsonResource
     {
         return [
             'id'        => $this->id,
-            'judul'     => $this->judul,
-            'slug'      => $this->slug,
-            'gambar'    => url('uploads/'.$this->gambar),
-            'tanggal'   => Carbon::make($this->tanggal)->format('d-m-Y H:i:s'),
-            'deskripsi' => $this->deskripsi,
+            'nama'      => $this->name,
+            'email'     => $this->email,
         ];
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Carbon\Carbon;
 
-class NewsResource extends JsonResource
+class NewsDetailResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -22,6 +22,7 @@ class NewsResource extends JsonResource
             'gambar'    => url('uploads/'.$this->gambar),
             'tanggal'   => Carbon::make($this->tanggal)->format('d-m-Y H:i:s'),
             'deskripsi' => $this->deskripsi,
+            'comment'   => CommentResource::collection($this->comment),
         ];
     }
 }

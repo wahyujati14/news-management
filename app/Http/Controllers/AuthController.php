@@ -39,7 +39,7 @@ class AuthController extends Controller
             if(Auth::attempt($credentials)) {
                 
                 $user = Auth::user();
-                $user['token'] = $user->createToken($user->id)->plainTextToken;
+                $user['token'] = $user->createToken($user->level)->plainTextToken;
                 
                 $data = AuthResource::make($user);
         

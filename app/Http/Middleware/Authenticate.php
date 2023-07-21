@@ -12,6 +12,9 @@ class Authenticate extends Middleware
      */
     protected function redirectTo(Request $request): ?string
     {
-        return $request->expectsJson() ? null : route('login');
+        echo json_encode(response()->json([
+            'OUT_STAT' => false,
+            'OUT_MESS' => 'Token Not Valid',
+        ], 401)->getData()); die();
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Carbon\Carbon;
 
-class NewsResource extends JsonResource
+class CommentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,12 +16,9 @@ class NewsResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'        => $this->id,
-            'judul'     => $this->judul,
-            'slug'      => $this->slug,
-            'gambar'    => url('uploads/'.$this->gambar),
-            'tanggal'   => Carbon::make($this->tanggal)->format('d-m-Y H:i:s'),
-            'deskripsi' => $this->deskripsi,
+            'keterangan'    => $this->keterangan,
+            'tanggal'       => Carbon::make($this->created_at)->format('d-m-Y H:i:s'),
+            'user'          => UserResource::make($this->user),
         ];
     }
 }
