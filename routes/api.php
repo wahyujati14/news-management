@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'auth'], function() use ($router) {
+Route::group(['prefix' => 'auth'], function () use ($router) {
     Route::post('/login', 'AuthController@login');
 });
 
-Route::group(['middleware' => 'auth:api'], function() use ($router) {
+Route::apiResource('/posts', App\Http\Controllers\Api\PostController::class);
+// Route::group(['middleware' => 'auth:api'], function () use ($router) {
+
 
     Route::group(['middleware' => 'role:ADMIN', 'prefix' => 'news'], function() use ($router) {
         Route::get('/', 'NewsController@index');
@@ -28,11 +30,11 @@ Route::group(['middleware' => 'auth:api'], function() use ($router) {
         Route::delete('/delete', 'NewsController@delete');
     });
 
-    Route::group(['middleware' => 'role:USER', 'prefix' => 'comment'], function() use ($router) {
-        Route::post('/:news_id', 'CommentController@index');
-        Route::post('/add', 'CommentController@add');
-        Route::put('/edit', 'CommentController@edit');
-        Route::delete('/delete', 'CommentController@delete');
-    });
-    
-});
+    // Route::group(['middleware' => 'role:USER', 'prefix' => 'comment'], function() use ($router) {
+    //     Route::post('/:news_id', 'CommentController@index');
+    //     Route::post('/add', 'CommentController@add');
+    //     Route::put('/edit', 'CommentController@edit');
+    //     Route::delete('/delete', 'CommentController@delete');
+    // });
+
+// });

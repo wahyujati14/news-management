@@ -4,6 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
 return new class extends Migration
 {
     /**
@@ -32,5 +34,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('news');
+    }
+    /**
+     * gambar
+     *
+     * @return Attribute
+     */
+    protected function gambar(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => asset('/storage/posts/' . $image),
+        );
     }
 };
