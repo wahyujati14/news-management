@@ -9,9 +9,9 @@ Saya membuat ini dengan Laravel 10, dengan PHP versi 8.1.0
 6. php artisan serve
 
 Akun admin :
-Email : admin@gmail.com <br>
-Password : admin
+1. Email : admin@gmail.com 
+2. Password : admin
 
 Akun user :
-Email : user@gmail.com <br>
-Password : user
+1. Email : user@gmail.com <br>
+2. Password : user
